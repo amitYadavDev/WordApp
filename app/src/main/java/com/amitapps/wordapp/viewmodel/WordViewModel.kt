@@ -5,13 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.amitapps.wordapp.data.model.Word
 import com.amitapps.wordapp.repository.WordRepository
+import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class WordViewModel (private val repository: WordRepository): ViewModel() {
-
-    val allWords: LiveData<List<Word>> = repository.allWords as LiveData<List<Word>>
+    
+    val allWords: LiveData<List<Word>> = repository.allWords.asLiveData()
 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
