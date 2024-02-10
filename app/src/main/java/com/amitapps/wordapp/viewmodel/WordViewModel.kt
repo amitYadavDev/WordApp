@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class WordViewModel (private val repository: WordRepository): ViewModel() {
-    
+
     val allWords: LiveData<List<Word>> = repository.allWords.asLiveData()
 
     /**
