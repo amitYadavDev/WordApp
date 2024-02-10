@@ -3,9 +3,9 @@
 <!-- Base application theme. -->
 <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
     <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/material_dynamic_primary0</item>
-    <item name="colorPrimaryDark">@color/design_default_color_primary_dark</item>
-    <item name="colorAccent">@color/material_dynamic_neutral10</item>
+    <item name="colorPrimary">#5315E1</item>
+    <item name="colorPrimaryDark">#3F0AB3</item>
+    <item name="colorAccent">#30068E</item>
 </style>
 
 <!-- The default font for RecyclerView items is too small.
