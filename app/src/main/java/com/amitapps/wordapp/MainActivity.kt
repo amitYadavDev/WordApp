@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.amitapps.wordapp.data.model.Word
 import com.amitapps.wordapp.viewmodel.WordViewModel
 import com.amitapps.wordapp.viewmodel.WordViewModelFactory
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     private val wordViewModel: WordViewModel by viewModels {
@@ -28,17 +29,26 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        // Add an observer on the LiveData returned by getAlphabetizedWords.
+        // The onChanged() method fires when the observed data changes and the activity is
+        // in the foreground.
         wordViewModel.allWords.observe(this, Observer { words ->
             words?.let { adapter.submitList(it) }
         })
+
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
+            val intent = Intent(this, NewWordActivity::class.java)
+            startActivityForResult(intent, newWordActivityRequestCode)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            data?.getStringArrayExtra(NewWordActivity.EXTRA_REPLY)?.let {
-                val word = Word(it)
+            data?.getStringExtra(NewWordActivity.EXTRA_REPLY)?.let {reply ->
+                val word = Word(word = reply)
                 wordViewModel.insert(word)
             }
         } else {
