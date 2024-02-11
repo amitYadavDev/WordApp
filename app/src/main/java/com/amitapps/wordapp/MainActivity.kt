@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amitapps.wordapp.data.model.Word
 import com.amitapps.wordapp.viewmodel.WordViewModel
 import com.amitapps.wordapp.viewmodel.WordViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 class MainActivity : AppCompatActivity() {
     private val wordViewModel: WordViewModel by viewModels {
