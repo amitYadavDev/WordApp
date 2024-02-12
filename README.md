@@ -1,2 +1,2 @@
 # Add Words
-Tech Stacks - Room, Coroutines, XML, Repository Pattern
+Tech Stacks - Kotlin, XML, Room, Coroutines, Repository Pattern, MVVM Architecture. 
